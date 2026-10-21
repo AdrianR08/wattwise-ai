@@ -11,11 +11,6 @@ rf_w_lag_model = joblib.load(MODEL_PATH)
 
 
 def predict_power(hour, month, day_of_week, lag_1h, lag_24h):
-    """Predict target-hour power in kW using Europe/Oslo calendar features.
-
-    Monday is 0. Lags are observed kW readings 1 and 24 hours before
-    the target hour; this function does not advance the supplied hour.
-    """
     for name, value, lower, upper in (
         ("hour", hour, 0, 23),
         ("month", month, 1, 12),
