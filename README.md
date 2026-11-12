@@ -6,7 +6,19 @@ Install `requirements.txt`, then run `streamlit run app.py`.
 The dashboard calls the CSV-analysis backend directly and displays consumption,
 data quality, unusual days, and the next-month baseline forecast. Uploads are
 processed in memory; this integration does not save them. Ask WattWise remains
-a placeholder until the LLM is connected.
+powered by your PC's Ollama model when the connection is configured.
+
+### Local AI
+
+Ollama must be running with `qwen3:4b` installed. Run `start_ai.ps1` on the PC
+to start the authenticated bridge and temporary Cloudflare connection. The setup
+uses `.venv/Scripts/python.exe` and `.local/cloudflared.exe` installed on this PC.
+Copy `.local/streamlit-cloud-secrets.toml` into the live app's **Settings → Secrets**.
+Do not commit that file or share its access key. No per-token API service is used.
+Keep the PC awake; restarting the tunnel changes its URL and requires updating
+the website settings. The tunnel is for demos, not a permanent production setup.
+Questions and analysis summaries pass through Cloudflare to this PC. Raw CSV files
+are not sent to the model. Local dashboard use connects directly to the bridge.
 
 Predict hourly grocery-store power demand using a trained random forest and observed power readings.
 

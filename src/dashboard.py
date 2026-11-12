@@ -48,3 +48,4 @@ def render_analysis(uploaded_file, *, unit, timezone, electricity_rate):
         st.dataframe(months, hide_index=True)
     st.download_button('Download analysis', json.dumps(result, indent=2, allow_nan=False),
                        file_name='wattwise-analysis.json', mime='application/json')
+    return result

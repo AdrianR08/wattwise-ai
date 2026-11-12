@@ -1,5 +1,6 @@
 import streamlit as st
 from src.dashboard import render_analysis
+from src.chat import render_chat
 
 st.set_page_config(
     page_title="WattWise AI",
@@ -394,20 +395,15 @@ unit = st.selectbox("Reading units", ["kW", "kWh"], help="Hourly average kW or k
 timezone = st.text_input("Your data's timezone", value="UTC", help="For example Europe/Oslo or US/Eastern. Used for local calendar months; timestamps may include UTC offsets.")
 st.caption("Use hourly readings with timestamp and consumption as the first two columns. Twelve months through the end of a calendar month are needed for a forecast.")
 
+analysis = None
 if uploaded_file is not None:
-    render_analysis(uploaded_file, unit=unit, timezone=timezone, electricity_rate=electricity_rate)
+    analysis = render_analysis(uploaded_file, unit=unit, timezone=timezone, electricity_rate=electricity_rate)
 else:
     st.info("Upload an electricity CSV file to see your consumption, patterns, and next-month forecast.")
 
 st.divider()
 
-# This section can be connected to an AI model later
-st.subheader("✦ Ask WattWise")
-
-st.info(
-    "In a future version, this section can answer questions "
-    "about your electricity usage and provide recommendations."
-)
+render_chat(analysis, electricity_rate)
 
 # Display the footer at the end of the page
 st.markdown(
