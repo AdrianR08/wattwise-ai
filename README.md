@@ -1,5 +1,13 @@
 # WattWise AI
 
+## Dashboard
+
+Install `requirements.txt`, then run `streamlit run app.py`.
+The dashboard calls the CSV-analysis backend directly and displays consumption,
+data quality, unusual days, and the next-month baseline forecast. Uploads are
+processed in memory; this integration does not save them. Ask WattWise remains
+a placeholder until the LLM is connected.
+
 Predict hourly grocery-store power demand using a trained random forest and observed power readings.
 
 ## Customer CSV analysis
@@ -26,11 +34,11 @@ From the repository root:
 ```sh
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-predictor.txt
 python main.py
 ```
 
-The example prints approximately `43.441628311492515` kW. Runtime dependencies are pinned in `requirements.txt`; the notebook and development environment are in `requirements-dev.txt`:
+The example prints approximately `43.441628311492515` kW. Legacy model dependencies are pinned in `requirements-predictor.txt`; use a separate environment from the dashboard. The notebook and development environment are in `requirements-dev.txt`:
 
 ```sh
 python -m pip install -r requirements-dev.txt
