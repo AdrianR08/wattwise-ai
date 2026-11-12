@@ -7,3 +7,4 @@ data/bdg2/*
 data/bdg2/*
 !data/bdg2/processed/
 !data/bdg2/metadata.csv
+!data/bdg2/weather.csv
