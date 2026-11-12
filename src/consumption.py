@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 
+from src.forecast import forecast_next_month
+
 
 def analyze_csv(path, *, unit, timezone='UTC', timestamp_column=None, value_column=None):
     if unit not in ('kWh', 'kW'):
@@ -71,7 +73,8 @@ def analyze_csv(path, *, unit, timezone='UTC', timestamp_column=None, value_colu
                      highest_hour=dict(timestamp=str(valid.idxmax()), kwh=float(valid.max())),
                      lowest_hour=dict(timestamp=str(valid.idxmin()), kwh=float(valid.min()))),
         monthly=monthly, unusual_days=findings,
+        forecast=forecast_next_month(monthly, end, timezone),
         limitations=['Totals exclude unavailable readings; incomplete months are marked.',
                      'Unusual days are statistical flags, not diagnoses of faulty equipment.',
                      'Daily flags compare same weekdays without seasonal or weather adjustment.',
-                     'Forecasting is not included in this analysis output.'])
+                     'The forecast assumes last month’s average usage continues; weather and operational changes are not predicted.'])

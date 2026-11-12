@@ -10,7 +10,11 @@ Accepts hourly interval kWh or hourly average kW (`--unit kW`), not cumulative
 meter readings. The first two columns default to timestamp and consumption;
 override with `--timestamp-column` and `--value-column`. Uses the latest 12 months
 and returns data quality, monthly totals, high/low hours, and unusual-day flags.
-Incomplete totals are marked. Forecasting and LLM explanation are separate steps.
+Incomplete totals are marked. Output includes a next-month baseline forecast when
+12 consecutive months have at least 95% hourly coverage and the upload ends at a
+calendar-month boundary. Otherwise it gives a reason the forecast is unavailable.
+The forecast adjusts last month's average hourly usage for next month's length;
+it has no calibrated uncertainty interval. LLM explanation remains a separate step.
 
 Experimental training scripts and their separate dependencies are in `experiments/`.
 

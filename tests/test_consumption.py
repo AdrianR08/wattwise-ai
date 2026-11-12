@@ -40,3 +40,6 @@ class ConsumptionTests(unittest.TestCase):
         result = self.analyze(pd.DataFrame({'time': times, 'usage': 1.}))
         self.assertEqual(result['monthly'][0]['month'], '2024-02')
         self.assertEqual(len(result['monthly']), 12)
+        self.assertEqual(result['forecast']['status'], 'available')
+        self.assertEqual(result['forecast']['month'], '2025-02')
+        self.assertEqual(result['forecast']['predicted_kwh'], 28 * 24)
