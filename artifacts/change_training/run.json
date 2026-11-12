@@ -1,0 +1,21 @@
+{
+  "forecast": "one-hour-ahead using observed history",
+  "seed": 42,
+  "training_rows": 298875,
+  "source_buildings": 368,
+  "evaluated_buildings": 353,
+  "validation_start_utc": "2017-03-17 14:00:00+00:00",
+  "test_start_utc": "2017-08-09 11:00:00+00:00",
+  "selected_by_type": {
+    "Food sales and service": "change_model",
+    "Healthcare": "change_model",
+    "Manufacturing/industrial": "change_model",
+    "Office": "latest_baseline",
+    "Retail": "change_model",
+    "Services": "latest_baseline",
+    "Technology/science": "change_model",
+    "Warehouse/storage": "change_model"
+  },
+  "change_model_building_wins": 301,
+  "test_status": "Previously inspected historical period; exploratory, not a fresh test"
+}

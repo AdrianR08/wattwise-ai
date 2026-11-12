@@ -1,5 +1,15 @@
 # WattWise AI
 
+## Customer CSV analysis
+
+`python analyze_consumption.py customer.csv --unit kWh --timezone Europe/Oslo --output analysis.json`
+
+Accepts hourly interval kWh or hourly average kW (`--unit kW`), not cumulative
+meter readings. The first two columns default to timestamp and consumption;
+override with `--timestamp-column` and `--value-column`. Uses the latest 12 months
+and returns data quality, monthly totals, high/low hours, and unusual-day flags.
+Incomplete totals are marked. Forecasting and LLM explanation are separate steps.
+
 Predict hourly grocery-store power demand using a trained random forest and observed power readings.
 
 ## Setup

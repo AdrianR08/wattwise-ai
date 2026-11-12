@@ -1,0 +1,29 @@
+{
+  "seed": 42,
+  "forecast": "one-hour-ahead with observed history",
+  "validation_start_utc": "2017-03-17 14:00:00+00:00",
+  "test_start_utc": "2017-08-09 11:00:00+00:00",
+  "shared_training_rows": 298875,
+  "type_training_rows": {
+    "Food sales and service": 60715,
+    "Healthcare": 100000,
+    "Manufacturing/industrial": 99168,
+    "Office": 99786,
+    "Retail": 87923,
+    "Services": 90602,
+    "Technology/science": 58773,
+    "Warehouse/storage": 99996
+  },
+  "selected_by_type": {
+    "Food sales and service": "by_type",
+    "Healthcare": "latest_baseline",
+    "Manufacturing/industrial": "by_type",
+    "Office": "latest_baseline",
+    "Retail": "latest_baseline",
+    "Services": "by_type",
+    "Technology/science": "by_type",
+    "Warehouse/storage": "latest_baseline"
+  },
+  "usable_rows": 5903515,
+  "buildings": 368
+}
