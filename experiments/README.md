@@ -7,6 +7,7 @@ environment, then run:
 python -m experiments.train_buildings
 python -m experiments.train_changes
 python -m experiments.train_changes --weather
+python -m experiments.compare_monthly
 ```
 
 Generated models and reports stay in ignored `artifacts/` subfolders.
@@ -17,3 +18,6 @@ shared model 8.37 kW, models by type 8.02 kW, change model 6.83 kW,
 change model with weather 6.86 kW. Low-use buildings remain problematic.
 The comparison period has already been inspected; new data is needed for an
 independent evaluation. These experiments do not replace the application model.
+
+The monthly comparison uses twelve calendar months to predict the next month;
+see `monthly_results.md` for its separate results.
