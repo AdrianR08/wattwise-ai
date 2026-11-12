@@ -30,7 +30,8 @@ def render_analysis(uploaded_file, *, unit, timezone, electricity_rate):
     forecast = result['forecast']
     if forecast['status'] == 'available':
         st.metric(f"Expected consumption · {forecast['month']}", f"{forecast['predicted_kwh']:,.0f} kWh")
-        st.caption(f"Estimated usage cost: ${forecast['predicted_kwh'] * electricity_rate:,.2f}. Based on {forecast['source_month']}'s average hourly usage, adjusted for month length. Weather and changes in operations may affect actual use. An uncertainty range is not yet available.")
+        st.caption(f"Estimated usage cost: ${forecast['predicted_kwh'] * electricity_rate:,.2f}. Model: Random forest, using your previous 12 months. Future weather and operational changes are not supplied. An uncertainty range is not yet available.")
+        st.caption(f"Last-month baseline for comparison: {forecast['baseline_kwh']:,.0f} kWh. The ML model did not consistently beat this baseline in historical testing.")
     else:
         st.info(forecast['reason'])
     st.subheader('Worth a closer look')

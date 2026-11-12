@@ -2,3 +2,5 @@ streamlit==1.52.2
 pyarrow==22.0.0
 pandas==2.3.3
 tzdata==2026.6
+scikit-learn==1.8.0
+joblib==1.5.2

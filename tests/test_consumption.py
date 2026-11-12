@@ -42,4 +42,6 @@ class ConsumptionTests(unittest.TestCase):
         self.assertEqual(len(result['monthly']), 12)
         self.assertEqual(result['forecast']['status'], 'available')
         self.assertEqual(result['forecast']['month'], '2025-02')
-        self.assertEqual(result['forecast']['predicted_kwh'], 28 * 24)
+        self.assertEqual(result['forecast']['method'], 'random_forest')
+        self.assertGreaterEqual(result['forecast']['predicted_kwh'], 0)
+        self.assertEqual(result['forecast']['baseline_kwh'], 28 * 24)

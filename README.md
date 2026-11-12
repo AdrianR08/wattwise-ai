@@ -4,7 +4,7 @@
 
 Install `requirements.txt`, then run `streamlit run app.py`.
 The dashboard calls the CSV-analysis backend directly and displays consumption,
-data quality, unusual days, and the next-month baseline forecast. Uploads are
+data quality, unusual days, and the next-month random forest forecast. Uploads are
 processed in memory; this integration does not save them. Ask WattWise remains
 powered by your PC's Ollama model when the connection is configured.
 
@@ -30,11 +30,17 @@ Accepts hourly interval kWh or hourly average kW (`--unit kW`), not cumulative
 meter readings. The first two columns default to timestamp and consumption;
 override with `--timestamp-column` and `--value-column`. Uses the latest 12 months
 and returns data quality, monthly totals, high/low hours, and unusual-day flags.
-Incomplete totals are marked. Output includes a next-month baseline forecast when
+Incomplete totals are marked. Output includes a next-month ML forecast when
 12 consecutive months have at least 95% hourly coverage and the upload ends at a
 calendar-month boundary. Otherwise it gives a reason the forecast is unavailable.
-The forecast adjusts last month's average hourly usage for next month's length;
-it has no calibrated uncertainty interval. LLM explanation remains a separate step.
+The trained random forest uses twelve monthly consumption averages and the target
+month. The last-month baseline is shown separately for comparison; random forest
+did not consistently outperform it in historical testing. No calibrated uncertainty
+interval is available. Qwen explains the results; it does not generate forecasts.
+The deployed model is `models/monthly_random_forest.joblib`; its training details
+are in the adjacent JSON file. Rebuild with `python -m experiments.train_monthly_model`
+using `requirements.txt`. Its training buildings are non-residential; performance
+on other customer populations is not established.
 
 Experimental training scripts and their separate dependencies are in `experiments/`.
 

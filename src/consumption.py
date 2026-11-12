@@ -77,4 +77,4 @@ def analyze_csv(path, *, unit, timezone='UTC', timestamp_column=None, value_colu
         limitations=['Totals exclude unavailable readings; incomplete months are marked.',
                      'Unusual days are statistical flags, not diagnoses of faulty equipment.',
                      'Daily flags compare same weekdays without seasonal or weather adjustment.',
-                     'The forecast assumes last month’s average usage continues; weather and operational changes are not predicted.'])
+                     'The random forest forecast is trained on non-residential buildings. Future weather and operational changes are not supplied.'])

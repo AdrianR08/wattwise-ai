@@ -1,0 +1,14 @@
+{
+  "model": "RandomForestRegressor",
+  "trees": 150,
+  "seed": 42,
+  "sklearn_version": "1.8.0",
+  "training_examples": 2531,
+  "training_buildings": 279,
+  "first_target_month": "2017-01",
+  "last_target_month": "2017-12",
+  "target": "Next-month mean hourly power normalized by preceding twelve-month mean (floor 1 kW)",
+  "training_data": "BDG2 non-residential buildings; monthly coverage at least 95%",
+  "validation": "See experiments/rolling_results.md. Model did not consistently beat last-month baseline.",
+  "deployment": "Refit on all eligible historical examples; refit predictions are not new validation results."
+}

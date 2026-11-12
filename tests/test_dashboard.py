@@ -4,6 +4,8 @@ from pathlib import Path
 
 import pandas as pd
 from streamlit.testing.v1 import AppTest
+from src.consumption import analyze_csv
+from io import StringIO
 
 
 class DashboardTests(unittest.TestCase):
@@ -26,11 +28,14 @@ render_analysis(BytesIO(Path({str(path)!r}).read_bytes()), unit='kWh', timezone=
 
     def test_upload_analysis_and_forecast_render(self):
         times = pd.date_range('2024-01-01', '2025-01-01', freq='h', inclusive='left', tz='UTC')
-        app = self.render_csv(pd.DataFrame({'timestamp': times, 'usage': 1.}).to_csv(index=False))
+        csv = pd.DataFrame({'timestamp': times, 'usage': 1.}).to_csv(index=False)
+        expected = analyze_csv(StringIO(csv), unit='kWh')['forecast']['predicted_kwh']
+        app = self.render_csv(csv)
         self.assertFalse(app.exception)
         self.assertFalse(app.error)
         forecast = [m for m in app.metric if 'Expected consumption' in m.label]
-        self.assertEqual(forecast[0].value, '744 kWh')
+        self.assertEqual(forecast[0].value, f'{expected:,.0f} kWh')
+        self.assertTrue(any('Model: Random forest' in c.value for c in app.caption))
 
     def test_invalid_upload_shows_error(self):
         app = self.render_csv('timestamp,usage\ninvalid,10\n')

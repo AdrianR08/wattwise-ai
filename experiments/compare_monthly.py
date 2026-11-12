@@ -13,9 +13,9 @@ from sklearn.preprocessing import StandardScaler
 from threadpoolctl import threadpool_limits
 
 from experiments.train_buildings import DATA, ROOT
+from src.monthly_model import FEATURES, make_features
 
 OUT = ROOT / 'artifacts/monthly_comparison'
-FEATURES = [f'history_{i}' for i in range(1, 13)] + ['month_sin', 'month_cos']
 
 
 def examples():
@@ -46,9 +46,7 @@ def examples():
                        target_rate=target_rate, hours=hours, scale=scale,
                        coverage=coverage, last_month=rates[0] * hours,
                        seasonal=rates[-1] * hours, annual_average=rates.mean() * hours)
-            row.update({f'history_{i+1}': rate / scale for i, rate in enumerate(rates)})
-            row.update(month_sin=np.sin(2*np.pi*period.month/12),
-                       month_cos=np.cos(2*np.pi*period.month/12))
+            row.update(make_features(rates, period.month)[0].iloc[0].to_dict())
             rows.append(row)
     return pd.DataFrame(rows)
 
