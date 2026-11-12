@@ -8,7 +8,7 @@ from pathlib import Path
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 
-from src.llm import build_messages
+from src.llm import build_messages, forecast_bill_answer
 
 ROOT = Path(__file__).resolve().parents[1]
 KEY = ROOT / '.local/llm.key'
@@ -17,6 +17,9 @@ BUSY = threading.Lock()
 
 def generate(analysis, question, history):
     messages = build_messages(analysis, question, history)
+    direct = forecast_bill_answer(analysis, question)
+    if direct:
+        return direct
     payload = json.dumps(dict(model='qwen3:4b', messages=messages, think=True,
         stream=False, options=dict(temperature=.2, num_predict=4096, num_ctx=8192))).encode()
     request = Request('http://127.0.0.1:11434/api/chat', data=payload,

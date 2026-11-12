@@ -7,11 +7,30 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
-from src.llm import ask, build_messages
+from src.llm import ask, build_messages, chat_markdown, forecast_bill_answer
 from src.llm_server import generate, make_handler
 
 
 class LLMTests(unittest.TestCase):
+    def test_forecast_cost_uses_supplied_amount(self):
+        analysis = dict(forecast=dict(status='available', month='2026-01', predicted_kwh=18134.789),
+            cost_estimate=dict(currency='USD', forecast_usage_cost=2720.22, rate_per_kwh=.15))
+        with patch('src.llm_server.urlopen') as model:
+            answer = generate(analysis, 'What is the predicted bill amount for next month?', [])
+            self.assertIn('**$2,720.22**', answer)
+            self.assertIn('18,134.79 kWh', answer)
+            self.assertIn('Fixed fees and taxes', answer)
+            model.assert_not_called()
+        self.assertIsNone(forecast_bill_answer(analysis, 'Why is my predicted bill so high?'))
+        self.assertEqual(chat_markdown('**$2,720.22** at $0.15'), '**\\$2,720.22** at \\$0.15')
+        self.assertEqual(chat_markdown('\\$2.00'), '\\$2.00')
+
+    def test_unavailable_forecast_does_not_invent_cost(self):
+        answer = forecast_bill_answer(dict(forecast=dict(status='unavailable', reason='More history is needed.')),
+                                      'What is my predicted bill for next month?')
+        self.assertIn('More history is needed', answer)
+        self.assertNotIn('$', answer)
+
     def test_only_final_answer_is_returned(self):
         response = BytesIO(json.dumps({'message': {'thinking': 'private working notes',
                                                    'content': 'You used 123 kWh.'}}).encode())

@@ -6,7 +6,7 @@ from urllib.error import HTTPError, URLError
 
 import streamlit as st
 
-from src.llm import ask
+from src.llm import ask, chat_markdown
 
 
 def render_chat(analysis, electricity_rate):
@@ -39,7 +39,7 @@ def render_chat(analysis, electricity_rate):
     st.caption('Questions and your consumption summary are processed by WattWise’s locally hosted AI. It explains the analysis; it cannot diagnose appliance faults.')
     for message in st.session_state.chat_messages:
         with st.chat_message(message['role']):
-            st.markdown(message['content'])
+            st.markdown(chat_markdown(message['content']))
     question = st.chat_input('Ask about your consumption, unusual days, or forecast', max_chars=2000)
     if question:
         with st.chat_message('user'):
@@ -53,4 +53,4 @@ def render_chat(analysis, electricity_rate):
         st.session_state.chat_messages.extend([dict(role='user', content=question), dict(role='assistant', content=answer)])
         st.session_state.chat_messages = st.session_state.chat_messages[-20:]
         with st.chat_message('assistant'):
-            st.markdown(answer)
+            st.markdown(chat_markdown(answer))
