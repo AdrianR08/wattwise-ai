@@ -1,0 +1,369 @@
+building_id,site_id,primaryspaceusage,sub_primaryspaceusage,sqm,timezone
+Panther_office_Karla,Panther,Office,Office,2508.4,US/Eastern
+Panther_office_Graham,Panther,Office,Office,7799.9,US/Eastern
+Panther_office_Valarie,Panther,Office,Office,1416.8,US/Eastern
+Panther_office_Larry,Panther,Office,Office,1738.9,US/Eastern
+Panther_office_Jeane,Panther,Office,Office,654.3,US/Eastern
+Panther_office_Jesus,Panther,Office,Office,9595.6,US/Eastern
+Panther_office_Catherine,Panther,Office,Office,2504.0,US/Eastern
+Panther_office_Garth,Panther,Office,Office,4919.9,US/Eastern
+Panther_office_Shauna,Panther,Office,Office,4495.8,US/Eastern
+Panther_office_Lois,Panther,Office,Office,1186.3,US/Eastern
+Panther_office_Taryn,Panther,Office,Office,6003.3,US/Eastern
+Panther_office_Kristen,Panther,Office,Office,8719.9,US/Eastern
+Panther_retail_Kristina,Panther,Retail,Retail,5487.9,US/Eastern
+Panther_retail_Rachel,Panther,Retail,Retail,26.3,US/Eastern
+Panther_retail_Gilbert,Panther,Retail,Retail,1421.8,US/Eastern
+Panther_retail_Lester,Panther,Retail,Retail,840.3,US/Eastern
+Panther_retail_Felix,Panther,Retail,Retail,2941.9,US/Eastern
+Panther_office_Christian,Panther,Office,Office,1553.9,US/Eastern
+Panther_office_Lauretta,Panther,Office,Office,3366.8,US/Eastern
+Panther_office_Patti,Panther,Office,Office,14503.2,US/Eastern
+Panther_office_Brent,Panther,Office,Office,998.1,US/Eastern
+Panther_office_Hannah,Panther,Office,Office,375.1,US/Eastern
+Panther_retail_Romeo,Panther,Retail,Retail,15027.5,US/Eastern
+Panther_office_Lavinia,Panther,Office,Office,1001.4,US/Eastern
+Panther_office_Clementine,Panther,Office,Office,3100.2,US/Eastern
+Panther_office_Danica,Panther,Office,Office,210.0,US/Eastern
+Panther_office_Antonette,Panther,Office,Office,1752.2,US/Eastern
+Panther_office_Christin,Panther,Office,Office,1474.9,US/Eastern
+Panther_office_Ruthie,Panther,Office,Office,4211.3,US/Eastern
+Robin_office_Shirlene,Robin,Office,Office,4647.0,Europe/London
+Robin_office_Gayle,Robin,Office,Office,4161.0,Europe/London
+Robin_office_Dina,Robin,Office,Office,4213.0,Europe/London
+Robin_office_Victor,Robin,Office,Office,3724.0,Europe/London
+Robin_office_Lindsay,Robin,Office,Office,5358.0,Europe/London
+Robin_office_Adolph,Robin,Office,Office,1321.0,Europe/London
+Robin_office_Saul,Robin,Office,Office,2937.0,Europe/London
+Robin_office_Donald,Robin,Office,Office,7669.0,Europe/London
+Robin_office_Wai,Robin,Office,Office,16221.0,Europe/London
+Robin_office_Zelma,Robin,Office,Office,7607.0,Europe/London
+Robin_office_Antonina,Robin,Office,Office,6099.7,Europe/London
+Robin_office_Serena,Robin,Office,Office,2833.1,Europe/London
+Robin_office_Soledad,Robin,Office,Office,957.0,Europe/London
+Robin_office_Erma,Robin,Office,Office,4434.0,Europe/London
+Robin_office_Addie,Robin,Office,Office,1495.0,Europe/London
+Robin_office_Maryann,Robin,Office,Office,3201.0,Europe/London
+Robin_office_Sammie,Robin,Office,Office,4802.0,Europe/London
+Fox_office_Clayton,Fox,Office,Office,488.5,US/Mountain
+Fox_office_Susanne,Fox,Office,Office,941.6,US/Mountain
+Fox_warehouse_Pearl,Fox,Warehouse/storage,Warehouse,1199.2,US/Mountain
+Fox_warehouse_Lorretta,Fox,Warehouse/storage,Warehouse,360.2,US/Mountain
+Fox_retail_Manie,Fox,Retail,Retail,4201.4,US/Mountain
+Fox_office_Essie,Fox,Office,Office,12244.3,US/Mountain
+Fox_office_Israel,Fox,Office,Office,11282.1,US/Mountain
+Fox_office_Berniece,Fox,Office,Office,2173.2,US/Mountain
+Fox_food_Francesco,Fox,Food sales and service,Restaurant,2310.2,US/Mountain
+Fox_office_Margarita,Fox,Office,Office,2187.8,US/Mountain
+Fox_office_Molly,Fox,Office,Office,576.3,US/Mountain
+Fox_office_Demetrius,Fox,Office,Office,14463.3,US/Mountain
+Fox_office_Sheila,Fox,Office,Office,901.4,US/Mountain
+Fox_office_Yong,Fox,Office,Office,15232.3,US/Mountain
+Fox_health_Lorena,Fox,Healthcare,Health Services,3428.5,US/Mountain
+Fox_office_Carson,Fox,Office,Office,6891.5,US/Mountain
+Fox_office_Bernard,Fox,Office,Office,4182.2,US/Mountain
+Fox_office_Alice,Fox,Office,Office,18806.8,US/Mountain
+Fox_office_Edythe,Fox,Office,Office,7772.3,US/Mountain
+Fox_office_Thelma,Fox,Office,Office,11052.3,US/Mountain
+Fox_office_Easter,Fox,Office,Office,2766.5,US/Mountain
+Fox_office_Zachary,Fox,Office,Office,13038.5,US/Mountain
+Fox_office_Brandy,Fox,Office,Office,3921.8,US/Mountain
+Fox_office_Vicki,Fox,Office,Office,6580.5,US/Mountain
+Fox_office_Joy,Fox,Office,Office,6581.0,US/Mountain
+Fox_office_Gaylord,Fox,Office,Office,13759.0,US/Mountain
+Fox_food_Scott,Fox,Food sales and service,Restaurant,2681.4,US/Mountain
+Fox_office_Juana,Fox,Office,Office,2671.0,US/Mountain
+Fox_office_Rowena,Fox,Office,Office,3132.0,US/Mountain
+Fox_office_Karima,Fox,Office,Office,4806.1,US/Mountain
+Rat_office_Adele,Rat,Office,Office,37904.4,US/Eastern
+Rat_office_Ashlee,Rat,Office,Office,2186.9,US/Eastern
+Rat_office_Ronald,Rat,Office,Office,802.4,US/Eastern
+Rat_office_Jeannie,Rat,Office,Office,1495.6,US/Eastern
+Rat_office_Craig,Rat,Office,Office,9754.8,US/Eastern
+Rat_office_Lora,Rat,Office,Office,21274.8,US/Eastern
+Rat_health_Guy,Rat,Healthcare,Hospital (General Medical & Surgical),76141.2,US/Eastern
+Rat_retail_Jeffrey,Rat,Retail,Retail Store,1532.9,US/Eastern
+Rat_office_Colby,Rat,Office,Office,79000.4,US/Eastern
+Rat_warehouse_Shari,Rat,Warehouse/storage,Non-Refrigerated Warehouse,2537.9,US/Eastern
+Rat_office_Tracy,Rat,Office,Office,1275.4,US/Eastern
+Rat_office_Kasey,Rat,Office,Office,3195.9,US/Eastern
+Rat_warehouse_Maegan,Rat,Warehouse/storage,Non-Refrigerated Warehouse,1378.6,US/Eastern
+Rat_warehouse_Eloisa,Rat,Warehouse/storage,Non-Refrigerated Warehouse,18843.4,US/Eastern
+Rat_office_Loyd,Rat,Office,Office,2779.3,US/Eastern
+Rat_office_Randy,Rat,Office,Office,5779.0,US/Eastern
+Rat_office_Jessica,Rat,Office,Office,30542.8,US/Eastern
+Rat_health_Tanya,Rat,Healthcare,Urgent Care Center/Clinic/Other Outpatient Office,2712.0,US/Eastern
+Rat_office_Annis,Rat,Office,Office,594.6,US/Eastern
+Rat_office_Arron,Rat,Office,Office,3716.1,US/Eastern
+Rat_office_Avis,Rat,Office,Office,44099.2,US/Eastern
+Rat_office_Rosemary,Rat,Office,Office,2787.1,US/Eastern
+Rat_warehouse_Doretta,Rat,Warehouse/storage,Non-Refrigerated Warehouse,10454.9,US/Eastern
+Rat_warehouse_Breanna,Rat,Warehouse/storage,Non-Refrigerated Warehouse,4795.8,US/Eastern
+Rat_office_Olivia,Rat,Office,Office,2564.1,US/Eastern
+Rat_office_Mei,Rat,Office,Office,743.2,US/Eastern
+Rat_health_Rosaria,Rat,Healthcare,Senior Care Community,1393.5,US/Eastern
+Rat_health_Gaye,Rat,Healthcare,Other/Specialty Hospital,2220.7,US/Eastern
+Rat_health_Mildred,Rat,Healthcare,Senior Care Community,911.7,US/Eastern
+Rat_office_Jacinta,Rat,Office,Office,2835.9,US/Eastern
+Rat_health_Shane,Rat,Healthcare,Hospital (General Medical & Surgical),41806.4,US/Eastern
+Rat_health_Ann,Rat,Healthcare,Other/Specialty Hospital,7478.7,US/Eastern
+Rat_office_Ramiro,Rat,Office,Office,8297.6,US/Eastern
+Rat_office_Jill,Rat,Office,Office,31587.0,US/Eastern
+Rat_office_Jamal,Rat,Office,Office,27406.4,US/Eastern
+Rat_office_Sammy,Rat,Office,Office,2912.1,US/Eastern
+Bear_science_Eleanor,Bear,Technology/science,Technology/science,3081.3,US/Pacific
+Bear_science_Alison,Bear,Technology/science,Technology/science,4945.6,US/Pacific
+Lamb_health_Ken,Lamb,Healthcare,Creamatorium,1716.0,Europe/London
+Lamb_industrial_Venessa,Lamb,Manufacturing/industrial,Greenhouse,588.0,Europe/London
+Lamb_industrial_Willard,Lamb,Manufacturing/industrial,Greenhouse,965.0,Europe/London
+Lamb_industrial_Enrique,Lamb,Manufacturing/industrial,Industrial,358.0,Europe/London
+Lamb_industrial_Carla,Lamb,Manufacturing/industrial,Industrial,8426.0,Europe/London
+Lamb_food_Sylvia,Lamb,Food sales and service,Market,3280.0,Europe/London
+Lamb_office_William,Lamb,Office,Office,732.0,Europe/London
+Lamb_office_Peggy,Lamb,Office,Office,432.0,Europe/London
+Lamb_office_Velma,Lamb,Office,Office,14165.0,Europe/London
+Lamb_office_Vasiliki,Lamb,Office,Office,25087.0,Europe/London
+Lamb_office_Jo,Lamb,Office,Office,1542.0,Europe/London
+Lamb_office_Kent,Lamb,Office,Office,1200.0,Europe/London
+Lamb_office_Donita,Lamb,Office,Office,972.0,Europe/London
+Lamb_office_Maggie,Lamb,Office,Office,1134.0,Europe/London
+Lamb_office_Caitlin,Lamb,Office,Office,3365.0,Europe/London
+Lamb_office_Gerardo,Lamb,Office,Office,4859.0,Europe/London
+Lamb_office_Stefani,Lamb,Office,Office,1063.0,Europe/London
+Lamb_office_Raymond,Lamb,Office,Office,1805.0,Europe/London
+Lamb_office_Callie,Lamb,Office,Office,689.0,Europe/London
+Lamb_office_Bertha,Lamb,Office,Office,5336.0,Europe/London
+Lamb_warehouse_Allan,Lamb,Warehouse/storage,Warehouse,1457.0,Europe/London
+Peacock_office_Burl,Peacock,Office,Office,1661.0,US/Eastern
+Peacock_office_Glenn,Peacock,Office,Office,2179.3,US/Eastern
+Peacock_office_Norman,Peacock,Office,Office,3044.1,US/Eastern
+Peacock_office_Jonathon,Peacock,Office,Office,3482.5,US/Eastern
+Peacock_office_Julian,Peacock,Office,Office,3913.9,US/Eastern
+Peacock_office_Dara,Peacock,Office,Office,4644.2,US/Eastern
+Peacock_office_Annie,Peacock,Office,Office,6021.8,US/Eastern
+Peacock_office_Major,Peacock,Office,Office,6507.1,US/Eastern
+Peacock_office_Elton,Peacock,Office,Office,9694.9,US/Eastern
+Peacock_office_Effie,Peacock,Office,Office,9723.9,US/Eastern
+Gator_office_Carrie,Gator,Office,Office,24987.5,US/Eastern
+Gator_office_Lucy,Gator,Office,Office,16315.4,US/Eastern
+Gator_office_Betty,Gator,Office,Office,542.5,US/Eastern
+Gator_warehouse_Stacie,Gator,Warehouse/storage,Non-Refrigerated Warehouse,1475.2,US/Eastern
+Gator_warehouse_Constance,Gator,Warehouse/storage,Non-Refrigerated Warehouse,1404.7,US/Eastern
+Gator_office_Hunter,Gator,Office,Office,1314.6,US/Eastern
+Gator_office_Julie,Gator,Office,Office,527.7,US/Eastern
+Gator_office_Merle,Gator,Office,Office,794.5,US/Eastern
+Gator_office_August,Gator,Office,Office,4487.2,US/Eastern
+Gator_office_Lisa,Gator,Office,Office,3729.3,US/Eastern
+Bull_office_Lilla,Bull,Office,Office,16890.2,US/Central
+Bull_office_Hilton,Bull,Office,Office,743.6,US/Central
+Bull_services_Juanita,Bull,Services,garage,44779.2,US/Central
+Bull_office_Myron,Bull,Office,Office,5583.1,US/Central
+Bull_office_Nicolas,Bull,Office,Office,1943.3,US/Central
+Bull_office_Mai,Bull,Office,office,792.0,US/Central
+Bull_office_Anne,Bull,Office,Office,1499.0,US/Central
+Bull_services_Nadine,Bull,Services,garage,36198.8,US/Central
+Bull_office_Rob,Bull,Office,Office,30885.3,US/Central
+Bull_office_Chantel,Bull,Office,Office,9654.9,US/Central
+Bull_office_Efren,Bull,Office,Office,8005.2,US/Central
+Bull_services_Jeanmarie,Bull,Services,garage,32149.6,US/Central
+Bull_office_Yvonne,Bull,Office,Office,18019.5,US/Central
+Bull_office_Ella,Bull,Office,Office,821.0,US/Central
+Bull_services_Rachelle,Bull,Services,garage,34691.5,US/Central
+Bull_services_Winford,Bull,Services,garage,19904.7,US/Central
+Bull_office_Ivette,Bull,Office,Office,3229.1,US/Central
+Bull_office_Marco,Bull,Office,Office,3165.4,US/Central
+Bull_office_Claudia,Bull,Office,Office,2272.7,US/Central
+Bull_office_Sally,Bull,Office,Office,7705.3,US/Central
+Bull_office_Debbie,Bull,Office,Office,4782.9,US/Central
+Bull_office_Trevor,Bull,Office,Office,3546.4,US/Central
+Bobcat_office_Nikita,Bobcat,Office,Office,3895.7,US/Mountain
+Bobcat_office_Alma,Bobcat,Office,Office,1060.9,US/Mountain
+Bobcat_office_Kassandra,Bobcat,Office,Office,4003.6,US/Mountain
+Shrew_office_Katherine,Shrew,Office,Office,3410.0,Europe/London
+Shrew_office_Doris,Shrew,Office,Office,22568.9,Europe/London
+Shrew_office_Rose,Shrew,Office,Office,1058.0,Europe/London
+Shrew_office_Lin,Shrew,Office,Office,13995.0,Europe/London
+Shrew_office_Kenneth,Shrew,Office,Office,1719.0,Europe/London
+Shrew_office_Nora,Shrew,Office,Office,10203.0,Europe/London
+Shrew_office_Ila,Shrew,Office,Office,10905.0,Europe/London
+Shrew_office_Doug,Shrew,Office,Office,5630.0,Europe/London
+Shrew_office_Sherill,Shrew,Office,Office,18098.0,Europe/London
+Wolf_retail_Marcella,Wolf,Retail,Retail,363.0,Europe/Dublin
+Wolf_office_Joana,Wolf,Office,Office,1355.0,Europe/Dublin
+Wolf_office_Darleen,Wolf,Office,Office,5036.0,Europe/Dublin
+Wolf_science_Alfreda,Wolf,Technology/science,Data Centre,914.0,Europe/Dublin
+Wolf_office_Cary,Wolf,Office,Office,11795.0,Europe/Dublin
+Wolf_office_Nadia,Wolf,Office,Office,2745.0,Europe/Dublin
+Wolf_office_Elisabeth,Wolf,Office,Office,2591.0,Europe/Dublin
+Wolf_office_Rochelle,Wolf,Office,Office,3115.0,Europe/Dublin
+Wolf_office_Bobbie,Wolf,Office,Office,4691.0,Europe/Dublin
+Wolf_retail_Toshia,Wolf,Retail,Retail,4209.0,Europe/Dublin
+Wolf_office_Emanuel,Wolf,Office,Office,2005.0,Europe/Dublin
+Wolf_retail_Harriett,Wolf,Retail,Retail,4108.0,Europe/Dublin
+Wolf_office_Haydee,Wolf,Office,Office,1129.0,Europe/Dublin
+Hog_office_Leon,Hog,Office,Office,1938.3,US/Central
+Hog_office_Patrick,Hog,Office,Office,964.8,US/Central
+Hog_office_Rolando,Hog,Office,Office,18033.5,US/Central
+Hog_office_Nancie,Hog,Office,Office,8348.1,US/Central
+Hog_office_Migdalia,Hog,Office,Office,6754.9,US/Central
+Hog_industrial_Mariah,Hog,Manufacturing/industrial,Greenhouse,1065.6,US/Central
+Hog_office_Mack,Hog,Office,Office,5332.1,US/Central
+Hog_office_Eloise,Hog,Office,Office,11419.8,US/Central
+Hog_office_Bill,Hog,Office,Office,13375.5,US/Central
+Hog_office_Valda,Hog,Office,Office,5255.4,US/Central
+Hog_office_Sonny,Hog,Office,Office,5837.7,US/Central
+Hog_office_Garrett,Hog,Office,Office,28339.8,US/Central
+Hog_office_Elnora,Hog,Office,Office,9770.3,US/Central
+Hog_office_Cordelia,Hog,Office,Office,4420.1,US/Central
+Hog_office_Gustavo,Hog,Office,Office,6582.4,US/Central
+Hog_office_Josefina,Hog,Office,Office,14636.4,US/Central
+Hog_office_Marlena,Hog,Office,Office,12239.5,US/Central
+Hog_office_Almeda,Hog,Office,Office,6683.1,US/Central
+Hog_office_Man,Hog,Office,Office,8099.9,US/Central
+Hog_food_Morgan,Hog,Food sales and service,Bar/Tavern,3085.8,US/Central
+Hog_office_Randi,Hog,Office,Office,8556.3,US/Central
+Hog_office_Charla,Hog,Office,Office,9493.9,US/Central
+Hog_office_Buford,Hog,Office,Office,2521.9,US/Central
+Hog_office_Mari,Hog,Office,Office,6302.4,US/Central
+Hog_office_Alisha,Hog,Office,Office,3103.1,US/Central
+Hog_services_Joe,Hog,Services,Maintenance Repair Shop,3904.5,US/Central
+Hog_office_Lizzie,Hog,Office,Office,10351.6,US/Central
+Hog_services_Kerrie,Hog,Services,Maintenance Repair Shop,2501.5,US/Central
+Hog_office_Corie,Hog,Office,Office,11102.7,US/Central
+Hog_services_Marshall,Hog,Services,Maintenance Repair Shop,6506.9,US/Central
+Hog_office_Shon,Hog,Office,Office,7837.8,US/Central
+Hog_office_Sherrie,Hog,Office,Office,8639.4,US/Central
+Hog_office_Sydney,Hog,Office,Office,8094.7,US/Central
+Hog_office_Clemencia,Hog,Office,Office,5453.7,US/Central
+Hog_office_Napoleon,Hog,Office,Office,12365.4,US/Central
+Hog_office_Carri,Hog,Office,Office,2365.6,US/Central
+Hog_office_Bryan,Hog,Office,Office,9655.0,US/Central
+Hog_office_Leanne,Hog,Office,Office,7646.1,US/Central
+Hog_office_Lanell,Hog,Office,Office,14209.1,US/Central
+Hog_office_Myles,Hog,Office,Office,7412.0,US/Central
+Hog_office_Simon,Hog,Office,Office,2550.4,US/Central
+Hog_office_Joey,Hog,Office,Office,31275.8,US/Central
+Hog_office_Elke,Hog,Office,Office,9635.7,US/Central
+Hog_office_Bessie,Hog,Office,Office,8975.5,US/Central
+Hog_office_Sarah,Hog,Office,Office,14150.2,US/Central
+Hog_office_Byron,Hog,Office,Office,80038.2,US/Central
+Hog_office_Shawnna,Hog,Office,Office,27312.6,US/Central
+Hog_office_Shawna,Hog,Office,Office,18213.0,US/Central
+Hog_office_Terry,Hog,Office,Office,24854.9,US/Central
+Hog_office_Catharine,Hog,Office,Office,11042.3,US/Central
+Hog_science_Max,Hog,Technology/science,Lab Building,8310.7,US/Central
+Hog_office_Cornell,Hog,Office,Office,62385.0,US/Central
+Hog_office_Marlene,Hog,Office,Office,7451.3,US/Central
+Hog_office_Mary,Hog,Office,Office,4931.0,US/Central
+Hog_office_Guadalupe,Hog,Office,Office,6778.0,US/Central
+Hog_office_Betsy,Hog,Office,Office,23175.3,US/Central
+Hog_office_Alexis,Hog,Office,Office,2693.4,US/Central
+Hog_office_Mike,Hog,Office,Office,5924.5,US/Central
+Hog_office_Catalina,Hog,Office,Office,4900.4,US/Central
+Hog_office_Nia,Hog,Office,Office,53614.4,US/Central
+Hog_office_Marilyn,Hog,Office,Office,5525.5,US/Central
+Hog_industrial_Joanne,Hog,Manufacturing/industrial,Greenhouse,5281.6,US/Central
+Hog_industrial_Jay,Hog,Manufacturing/industrial,Greenhouse,5931.6,US/Central
+Hog_industrial_Jeremy,Hog,Manufacturing/industrial,Greenhouse,1216.2,US/Central
+Hog_industrial_Quentin,Hog,Manufacturing/industrial,Manufacturing Facility,7559.7,US/Central
+Hog_office_Emmanuel,Hog,Office,Office,1899.3,US/Central
+Hog_warehouse_Louise,Hog,Warehouse/storage,Warehouse (Conditioned),6185.9,US/Central
+Hog_office_Corey,Hog,Office,Office,12033.9,US/Central
+Hog_office_Merilyn,Hog,Office,Office,3446.3,US/Central
+Hog_office_Roger,Hog,Office,Office,9124.2,US/Central
+Hog_office_Elsy,Hog,Office,Office,3698.2,US/Central
+Hog_office_Cortney,Hog,Office,Office,9895.2,US/Central
+Hog_office_Sung,Hog,Office,Office,3328.6,US/Central
+Hog_office_Lavon,Hog,Office,Office,1530.3,US/Central
+Hog_services_Adrianna,Hog,Services,Maintenance Repair Shop,4696.4,US/Central
+Hog_warehouse_Rosanna,Hog,Warehouse/storage,Warehouse (Unconditioned),981.0,US/Central
+Hog_office_Judith,Hog,Office,Office,18626.2,US/Central
+Hog_office_Darline,Hog,Office,Office,1561.2,US/Central
+Hog_office_Thomas,Hog,Office,Office,2092.9,US/Central
+Hog_office_Richelle,Hog,Office,Office,9285.3,US/Central
+Hog_health_Jenny,Hog,Healthcare,Hospital,6916.0,US/Central
+Hog_health_Hisako,Hog,Healthcare,Hospital,11295.6,US/Central
+Hog_health_Kesha,Hog,Healthcare,Hospital,10757.1,US/Central
+Hog_office_Elizbeth,Hog,Office,Office,8593.5,US/Central
+Hog_office_Denita,Hog,Office,Office,8824.7,US/Central
+Hog_warehouse_Porsha,Hog,Warehouse/storage,Warehouse (Unconditioned),3666.3,US/Central
+Hog_office_Candi,Hog,Office,Office,18156.7,US/Central
+Hog_office_Miriam,Hog,Office,Office,1418.5,US/Central
+Hog_office_Vera,Hog,Office,Office,8483.5,US/Central
+Hog_office_Concetta,Hog,Office,Office,2699.9,US/Central
+Eagle_office_Lillian,Eagle,Office,Office,4844.1,US/Eastern
+Eagle_office_Henriette,Eagle,Office,Office,2181.5,US/Eastern
+Eagle_office_Tia,Eagle,Office,Office,11403.5,US/Eastern
+Eagle_office_Yadira,Eagle,Office,Office,15101.3,US/Eastern
+Eagle_office_Mable,Eagle,Office,Office,2568.4,US/Eastern
+Eagle_office_Ryan,Eagle,Office,Office,2092.5,US/Eastern
+Eagle_office_Jackie,Eagle,Office,Office,5737.3,US/Eastern
+Eagle_office_Elvis,Eagle,Office,Office,3972.1,US/Eastern
+Eagle_office_Patrice,Eagle,Office,Office,12050.2,US/Eastern
+Eagle_office_Sheree,Eagle,Office,Office,2907.9,US/Eastern
+Eagle_health_Athena,Eagle,Healthcare,Support,18040.6,US/Eastern
+Eagle_office_Isidro,Eagle,Office,Office,2217.7,US/Eastern
+Eagle_health_Jodi,Eagle,Healthcare,Support,22083.4,US/Eastern
+Eagle_health_Vincenza,Eagle,Healthcare,Patient Care,3284.5,US/Eastern
+Eagle_office_Lane,Eagle,Office,Office,4675.5,US/Eastern
+Eagle_food_Kay,Eagle,Food sales and service,Dining,6491.7,US/Eastern
+Eagle_office_Freida,Eagle,Office,Office,7246.6,US/Eastern
+Eagle_office_Francis,Eagle,Office,Office,14807.3,US/Eastern
+Eagle_office_Chantelle,Eagle,Office,Office,2202.0,US/Eastern
+Eagle_office_Dallas,Eagle,Office,Office,3522.6,US/Eastern
+Eagle_office_Bridgett,Eagle,Office,Office,5692.5,US/Eastern
+Eagle_office_Donovan,Eagle,Office,Office,8031.9,US/Eastern
+Eagle_office_Flossie,Eagle,Office,Office,3989.4,US/Eastern
+Eagle_office_Randolph,Eagle,Office,Office,6038.7,US/Eastern
+Eagle_food_Jennifer,Eagle,Food sales and service,Dining,3307.8,US/Eastern
+Eagle_office_Efrain,Eagle,Office,Office,3995.5,US/Eastern
+Eagle_health_Amy,Eagle,Healthcare,Support,5238.6,US/Eastern
+Eagle_office_Demetra,Eagle,Office,Office,9670.2,US/Eastern
+Eagle_office_Jeff,Eagle,Office,Office,1586.5,US/Eastern
+Eagle_office_Damian,Eagle,Office,Office,10606.4,US/Eastern
+Eagle_office_Elias,Eagle,Office,Office,5003.8,US/Eastern
+Eagle_office_Katheleen,Eagle,Office,Office,4202.9,US/Eastern
+Eagle_office_Elia,Eagle,Office,Office,6014.8,US/Eastern
+Eagle_office_Amie,Eagle,Office,Office,9581.8,US/Eastern
+Eagle_health_Lucinda,Eagle,Healthcare,Support,1161.3,US/Eastern
+Eagle_health_Reuben,Eagle,Healthcare,Patient Care,12083.6,US/Eastern
+Eagle_health_Reba,Eagle,Healthcare,Patient Care,19089.0,US/Eastern
+Eagle_office_Chauncey,Eagle,Office,Office,22068.7,US/Eastern
+Eagle_office_Norbert,Eagle,Office,Office,5406.6,US/Eastern
+Eagle_office_Remedios,Eagle,Office,Office,4781.8,US/Eastern
+Eagle_office_Lamont,Eagle,Office,Office,1453.8,US/Eastern
+Eagle_office_Nereida,Eagle,Office,Office,10746.6,US/Eastern
+Eagle_office_Mandi,Eagle,Office,Office,820.9,US/Eastern
+Eagle_office_Phyllis,Eagle,Office,Office,1994.5,US/Eastern
+Eagle_health_Margo,Eagle,Healthcare,Patient Care,2379.2,US/Eastern
+Eagle_office_Marisela,Eagle,Office,Office,8399.5,US/Eastern
+Eagle_office_Amanda,Eagle,Office,Office,8487.9,US/Eastern
+Eagle_health_Trisha,Eagle,Healthcare,Patient Care,6376.6,US/Eastern
+Eagle_office_Joette,Eagle,Office,Office,6414.0,US/Eastern
+Eagle_office_Michele,Eagle,Office,Office,6737.0,US/Eastern
+Eagle_office_Sonya,Eagle,Office,Office,8101.1,US/Eastern
+Cockatoo_office_Rodney,Cockatoo,Office,Office,4364.7,US/Eastern
+Cockatoo_science_Rex,Cockatoo,Technology/science,Data Center,5583.5,US/Eastern
+Cockatoo_office_Gail,Cockatoo,Office,Office,2909.4,US/Eastern
+Cockatoo_office_Paige,Cockatoo,Office,Office,12151.2,US/Eastern
+Cockatoo_office_Jodie,Cockatoo,Office,Office,2884.9,US/Eastern
+Cockatoo_office_Jimmy,Cockatoo,Office,Office,1369.8,US/Eastern
+Cockatoo_industrial_Nathaniel,Cockatoo,Manufacturing/industrial,Greenhouse,10360.4,US/Eastern
+Cockatoo_office_Laila,Cockatoo,Office,Office,10254.6,US/Eastern
+Cockatoo_office_Elbert,Cockatoo,Office,Office,3772.9,US/Eastern
+Cockatoo_office_Alton,Cockatoo,Office,Office,3972.1,US/Eastern
+Cockatoo_office_Roxanna,Cockatoo,Office,Office,2008.4,US/Eastern
+Cockatoo_office_Georgia,Cockatoo,Office,Office,14672.4,US/Eastern
+Cockatoo_office_Pansy,Cockatoo,Office,Office,8173.3,US/Eastern
+Cockatoo_office_Giovanni,Cockatoo,Office,Office,10710.6,US/Eastern
+Cockatoo_office_Kristin,Cockatoo,Office,Office,4603.6,US/Eastern
+Cockatoo_office_Delores,Cockatoo,Office,Office,7861.0,US/Eastern
+Cockatoo_office_Christy,Cockatoo,Office,Office,17376.7,US/Eastern
+Cockatoo_office_Lorraine,Cockatoo,Office,Office,1070.6,US/Eastern
+Cockatoo_industrial_Sarita,Cockatoo,Manufacturing/industrial,Greenhouse,1050.0,US/Eastern
+Cockatoo_office_Margaret,Cockatoo,Office,Office,8572.3,US/Eastern
+Mouse_health_Modesto,Mouse,Healthcare,Hospital,17993.0,Europe/London
+Mouse_health_Justin,Mouse,Healthcare,Hospital,17735.0,Europe/London
+Mouse_health_Estela,Mouse,Healthcare,Hospital,17193.0,Europe/London
+Mouse_health_Ileana,Mouse,Healthcare,Hospital,5399.0,Europe/London
+Mouse_science_Micheal,Mouse,Technology/science,Laboratory,5931.0,Europe/London
