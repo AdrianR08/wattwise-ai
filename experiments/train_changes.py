@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.ensemble import HistGradientBoostingRegressor
 from threadpoolctl import threadpool_limits
 
-from train_buildings import FEATURES as BASE_FEATURES, ROOT, load_data
+from experiments.train_buildings import FEATURES as BASE_FEATURES, ROOT, load_data
 
 FEATURES = BASE_FEATURES.copy()
 
@@ -75,9 +75,9 @@ def main(use_weather=False):
         data, names, coverage = add_weather(data, sites)
         FEATURES.extend(names)
         print(f'Weather coverage: {coverage}', flush=True)
-    previous = json.loads((ROOT / 'artifacts/building_training/run.json').read_text())
-    val_start = pd.Timestamp(previous['validation_start_utc'])
-    test_start = pd.Timestamp(previous['test_start_utc'])
+    dates = data.timestamp.drop_duplicates().sort_values()
+    val_start = dates.iloc[int(len(dates) * .6)]
+    test_start = dates.iloc[int(len(dates) * .8)]
     train = data[data.timestamp < val_start]
     allowance = max(1, 300_000 // train.building_id.nunique())
     sample = pd.concat([g.sample(min(len(g), allowance), random_state=42)

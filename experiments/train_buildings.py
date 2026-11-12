@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.ensemble import HistGradientBoostingRegressor
 from threadpoolctl import threadpool_limits
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data/bdg2/processed'
 OUT = ROOT / 'artifacts/building_training'
 FEATURES = ['hour', 'weekday', 'month', 'sqm', 'type_code', 'site_code',

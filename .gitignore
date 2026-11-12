@@ -4,7 +4,10 @@ __pycache__/
 .ipynb_checkpoints/
 .DS_Store
 data/bdg2/*
-data/bdg2/*
 !data/bdg2/processed/
 !data/bdg2/metadata.csv
 !data/bdg2/weather.csv
+artifacts/building_training/
+artifacts/change_training/
+artifacts/weather_training/
+artifacts/customer_analysis/

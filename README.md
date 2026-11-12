@@ -1,5 +1,7 @@
 # WattWise AI
 
+Predict hourly grocery-store power demand using a trained random forest and observed power readings.
+
 ## Customer CSV analysis
 
 `python analyze_consumption.py customer.csv --unit kWh --timezone Europe/Oslo --output analysis.json`
@@ -10,7 +12,7 @@ override with `--timestamp-column` and `--value-column`. Uses the latest 12 mont
 and returns data quality, monthly totals, high/low hours, and unusual-day flags.
 Incomplete totals are marked. Forecasting and LLM explanation are separate steps.
 
-Predict hourly grocery-store power demand using a trained random forest and observed power readings.
+Experimental training scripts and their separate dependencies are in `experiments/`.
 
 ## Setup
 
