@@ -8,6 +8,7 @@ python -m experiments.train_buildings
 python -m experiments.train_changes
 python -m experiments.train_changes --weather
 python -m experiments.compare_monthly
+python -m experiments.rolling_monthly
 ```
 
 Generated models and reports stay in ignored `artifacts/` subfolders.
@@ -21,3 +22,4 @@ independent evaluation. These experiments do not replace the application model.
 
 The monthly comparison uses twelve calendar months to predict the next month;
 see `monthly_results.md` for its separate results.
+The expanded six-date backtest is summarized in `rolling_results.md`.
