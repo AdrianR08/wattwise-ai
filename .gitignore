@@ -1,18 +1,103 @@
+# Python environments, caches, packaging and test outputs
 .venv/
+venv/
+env/
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.test-tmp/
+*.egg-info/
+/build/
+/dist/
+node_modules/
+
+# OS and personal editor files
 .DS_Store
-data/bdg2/*
-!data/bdg2/processed/
-!data/bdg2/metadata.csv
-!data/bdg2/weather.csv
-artifacts/building_training/
-artifacts/change_training/
-artifacts/weather_training/
-artifacts/customer_analysis/
-artifacts/monthly_comparison/
-artifacts/rolling_monthly/
+._*
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Credentials and local settings; sanitized examples remain shareable
 .env
+.env.*
+.env/
+!.env.example
+!.env.sample
+!.env.template
 .streamlit/secrets.toml
+.streamlit/secrets.*.toml
+!.streamlit/secrets.example.toml
+!.streamlit/secrets.sample.toml
+*.pem
+*.key
+*.p12
+*.pfx
+.aws/
 .local/
+
+# Store private customer inputs in these folders, never alongside public samples.
+# No blanket CSV/JSON/data/models rule: preserve reproducibility and deployment.
+uploads/
+customer_uploads/
+customer_data/
+private_data/
+/data/uploads/
+/data/customer/
+/data/customers/
+/data/private/
+/analysis.json
+
+# Preserve public prepared BDG2 data and matched metadata/weather.
+/data/bdg2/*
+!/data/bdg2/processed/
+!/data/bdg2/metadata.csv
+!/data/bdg2/weather.csv
+
+# Regenerable experiment output, plots, presentation builds and temporary files
+/artifacts/
+/.fiu-build/
+tmp/
+temp/
+*.tmp
+*.temp
+*.log
+
+# Course/presentation deliverables, including associated figures and notes
+/deliverables/
+/docs/adrian/
+class-notes/
+class_notes/
+presentations/
+speaker-notes/
+# Loose office/PDF deliverables at the root. Essential manuals under docs/
+# remain eligible for Git; do not blanket-ignore documentation by extension.
+/*.[pP][dD][fF]
+/*.[dD][oO][cC]
+/*.[dD][oO][cC][xX]
+/*.[pP][pP][tT]
+/*.[pP][pP][tT][xX]
+/*.[oO][dD][tT]
+/*.[oO][dD][pP]
+
+# Evaluation reports stay local, including their former experiment paths.
+/docs/reports/
+/experiments/*_results.md
+
+# Keep README/setup/API documentation.
+# Source, tests, requirements, notebooks, samples and models stay versionable.
