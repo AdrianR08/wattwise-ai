@@ -1,25 +1,17 @@
-# Forecasting experiments
+# Training and evaluation
 
-From the repository root, install `experiments/requirements.txt` in a Python 3.13
-environment, then run:
+Run commands from the project root. Data is in `data/bdg2/processed/`; historical weather is in `data/bdg2/weather.csv`.
 
-```sh
-python -m experiments.train_buildings
-python -m experiments.train_changes
-python -m experiments.train_changes --weather
-python -m experiments.compare_monthly
-python -m experiments.rolling_monthly
-```
+| Command | Purpose |
+|---|---|
+| `python -m experiments.train_hourly` | Train consumption-only hourly models |
+| `python -m experiments.compare_weather` | Compare hourly models with and without weather |
+| `python -m experiments.compare_monthly_weather` | Monthly weather validation and test comparison |
+| `python -m experiments.rolling_weather` | Four model families, with/without weather, across six dates and five customer folds |
+| `python -m experiments.train_monthly_model` | Refit the original active monthly Random Forest |
 
-Generated models and reports stay in ignored `artifacts/` subfolders.
-Each script runs independently with the tracked building CSVs.
+Reports live in `docs/reports/`; generated metrics and predictions live in ignored `artifacts/` subfolders. Training commands can overwrite their corresponding model bundles.
 
-Initial historical mean building errors: latest-reading baseline 7.63 kW,
-shared model 8.37 kW, models by type 8.02 kW, change model 6.83 kW,
-change model with weather 6.86 kW. Low-use buildings remain problematic.
-The comparison period has already been inspected; new data is needed for an
-independent evaluation. These experiments do not replace the application model.
+Earlier experiments remain for reproducibility: `train_buildings`, `train_changes`, `compare_monthly` and `rolling_monthly`. Newer scripts import shared helpers from some of these files; they are not unused duplicates.
 
-The monthly comparison uses twelve calendar months to predict the next month;
-see `monthly_results.md` for its separate results.
-The expanded six-date backtest is summarized in `rolling_results.md`.
+Results are exploratory historical evaluations. See the reports for coverage, date/customer separation and prepared-data limitations.

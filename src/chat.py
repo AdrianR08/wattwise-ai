@@ -7,6 +7,7 @@ from urllib.error import HTTPError, URLError
 import streamlit as st
 
 from src.llm import ask, chat_markdown
+from src.insights import bill_context
 
 
 def render_chat(analysis, electricity_rate):
@@ -15,7 +16,10 @@ def render_chat(analysis, electricity_rate):
         st.info('Upload a valid consumption file before asking a question.')
         return
     context = dict(analysis)
+    context['bill_insights'] = bill_context(analysis, electricity_rate)
     context['cost_estimate'] = dict(rate_per_kwh=electricity_rate, currency='USD',
+        random_forest_usage_cost=round(analysis['forecast']['random_forest_kwh'] * electricity_rate, 2)
+        if analysis['forecast'].get('random_forest_kwh') is not None else None,
         observed_usage_cost=round(analysis['summary']['observed_kwh'] * electricity_rate, 2),
         forecast_usage_cost=round(analysis['forecast']['predicted_kwh'] * electricity_rate, 2)
         if analysis['forecast']['status'] == 'available' else None,
@@ -36,7 +40,11 @@ def render_chat(analysis, electricity_rate):
     if not token:
         st.info('The AI assistant is not connected yet. Consumption analysis and forecasting remain available.')
         return
-    st.caption('Questions and your consumption summary are processed by WattWise’s locally hosted AI. It explains the analysis; it cannot diagnose appliance faults.')
+    st.caption(f"Ask about your analysis or next-hour power. Times use {analysis.get('timezone', 'America/New_York')}. Next hour means the hour after your file ends.")
+    if not st.session_state.chat_messages:
+        with st.chat_message('assistant'):
+            st.write('Let’s make sense of your energy use. I can show which months cost the most, explain how your readings connect to usage costs, and help you work out what to check next.')
+            st.caption('Try: “Which months were highest, and what might explain the pattern?” · “What could influence my bill?” · “How does my next-hour estimate compare with recent use?”')
     for message in st.session_state.chat_messages:
         with st.chat_message(message['role']):
             st.markdown(chat_markdown(message['content']))

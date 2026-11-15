@@ -35,7 +35,8 @@ render_analysis(BytesIO(Path({str(path)!r}).read_bytes()), unit='kWh', timezone=
         self.assertFalse(app.error)
         forecast = [m for m in app.metric if 'Expected consumption' in m.label]
         self.assertEqual(forecast[0].value, f'{expected:,.0f} kWh')
-        self.assertTrue(any('Model: Random forest' in c.value for c in app.caption))
+        self.assertTrue(any('Method used: Last-month baseline' in c.value for c in app.caption))
+        self.assertTrue(any('Experimental Random Forest comparison' == e.label for e in app.expander))
 
     def test_invalid_upload_shows_error(self):
         app = self.render_csv('timestamp,usage\ninvalid,10\n')

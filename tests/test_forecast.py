@@ -23,9 +23,10 @@ class ForecastTests(unittest.TestCase):
     def test_forecast_adjusts_for_daylight_saving(self):
         result = forecast_next_month(self.history('US/Eastern'),
             pd.Timestamp('2025-03-01', tz='US/Eastern'), 'US/Eastern')
-        self.assertEqual(result['predicted_kwh'], (31 * 24 - 1) * 2.5)
+        self.assertEqual(result['predicted_kwh'], (31 * 24 - 1) * 2)
+        self.assertEqual(result['random_forest_kwh'], (31 * 24 - 1) * 2.5)
         self.assertEqual(result['baseline_kwh'], (31 * 24 - 1) * 2)
-        self.assertEqual(result['method'], 'random_forest')
+        self.assertEqual(result['method'], 'last_month_baseline')
         self.assertIsNone(result['prediction_interval_kwh'])
 
     def test_partial_latest_month_has_no_forecast(self):
@@ -44,11 +45,18 @@ class ForecastTests(unittest.TestCase):
         months[-1]['valid_hours'] -= 2
         months[-1]['observed_kwh'] = months[-1]['valid_hours'] * 2.
         result = forecast_next_month(months, pd.Timestamp('2025-03-01', tz='UTC'), 'UTC')
-        self.assertEqual(result['predicted_kwh'], 31 * 24 * 2.5)
+        self.assertEqual(result['predicted_kwh'], 31 * 24 * 2)
         self.model.assert_called_once_with([2.] * 12, 3)
 
-    def test_missing_model_does_not_silently_use_baseline(self):
+    def test_missing_comparison_does_not_disable_baseline(self):
         self.model.side_effect = FileNotFoundError()
         result = forecast_next_month(self.history(), pd.Timestamp('2025-03-01', tz='UTC'), 'UTC')
-        self.assertEqual(result['status'], 'unavailable')
-        self.assertIsNone(result['predicted_kwh'])
+        self.assertEqual(result['status'], 'available')
+        self.assertEqual(result['predicted_kwh'], 31 * 24 * 2)
+        self.assertIsNone(result['random_forest_kwh'])
+
+    def test_lower_model_prediction_does_not_change_selected_method(self):
+        self.model.return_value = 1.
+        result = forecast_next_month(self.history(), pd.Timestamp('2025-03-01', tz='UTC'), 'UTC')
+        self.assertLess(result['random_forest_kwh'], result['predicted_kwh'])
+        self.assertEqual(result['method'], 'last_month_baseline')

@@ -24,7 +24,7 @@ def main():
         first_target_month=data.month.min(), last_target_month=data.month.max(),
         target='Next-month mean hourly power normalized by preceding twelve-month mean (floor 1 kW)',
         training_data='BDG2 non-residential buildings; monthly coverage at least 95%',
-        validation='See experiments/rolling_results.md. Model did not consistently beat last-month baseline.',
+        validation='See docs/reports/rolling_results.md. Model did not consistently beat last-month baseline.',
         deployment='Refit on all eligible historical examples; refit predictions are not new validation results.')
     MODEL_PATH.with_suffix('.json').write_text(json.dumps(details, indent=2), encoding='utf-8')
     print(json.dumps(details, indent=2), flush=True)

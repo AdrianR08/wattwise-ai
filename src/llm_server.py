@@ -13,6 +13,32 @@ from src.llm import build_messages, forecast_bill_answer
 ROOT = Path(__file__).resolve().parents[1]
 KEY = ROOT / '.local/llm.key'
 BUSY = threading.Lock()
+POWER_TOOL = dict(type='function', function=dict(name='predict_power',
+    description='Predict power for the hour after the uploaded file ends using observed lag readings. No arguments.',
+    parameters=dict(type='object', properties={}, additionalProperties=False)))
+
+
+def run_power_tool(analysis, arguments):
+    if arguments != {}:
+        return dict(error='predict_power takes no arguments; readings come from the uploaded file.')
+    context = analysis.get('hourly_prediction')
+    if not context:
+        return dict(error='Upload hourly consumption data before predicting next-hour power.')
+    try:
+        from src.hourly_model import predict_hourly
+
+        result = predict_hourly(context, analysis.get('timezone', 'America/New_York'), analysis.get('weather'))
+        from src.anomalies import forecast_watch
+        result['forecast_watch'] = forecast_watch(analysis.get('anomalies'), result['predicted_kw'])
+        rate = analysis.get('cost_estimate', {}).get('rate_per_kwh')
+        if isinstance(rate, (int, float)) and not isinstance(rate, bool) and 0 <= rate < float('inf'):
+            result['estimated_hour_usage_cost'] = round(result['estimated_hourly_kwh'] * rate, 2)
+            result['rate_per_kwh'] = rate
+        return result
+    except (ValueError, KeyError, TypeError) as error:
+        return dict(error=str(error))
+    except (ImportError, OSError):
+        return dict(error='The hourly prediction model is unavailable on the AI server.')
 
 
 def generate(analysis, question, history):
@@ -20,15 +46,54 @@ def generate(analysis, question, history):
     direct = forecast_bill_answer(analysis, question)
     if direct:
         return direct
-    payload = json.dumps(dict(model='qwen3:4b', messages=messages, think=True,
-        stream=False, options=dict(temperature=.2, num_predict=4096, num_ctx=8192))).encode()
-    request = Request('http://127.0.0.1:11434/api/chat', data=payload,
-                      headers={'Content-Type': 'application/json'})
-    with urlopen(request, timeout=120) as response:
-        answer = json.load(response)['message']['content'].strip()
+    prediction_requested = bool(re.search(r'\bnext[ -]hour\b|\bpredict(?:ion)?\s+(?:my\s+)?power\b', question, re.I))
+    prediction_run = False
+    prediction_result = None
+    for _ in range(3):
+        payload = json.dumps(dict(model='qwen3:4b', messages=messages, tools=[POWER_TOOL], think=True,
+            stream=False, options=dict(temperature=.2, num_predict=4096, num_ctx=8192))).encode()
+        request = Request('http://127.0.0.1:11434/api/chat', data=payload,
+                          headers={'Content-Type': 'application/json'})
+        with urlopen(request, timeout=120) as response:
+            message = json.load(response)['message']
+        calls = message.get('tool_calls', [])
+        markup = re.search(r'<function_call>\s*(.*?)\s*</function_call>', message.get('content', ''), re.S)
+        if not calls and markup:
+            function = json.loads(markup.group(1))
+            calls = [dict(function=function)]
+            message = dict(role='assistant', content='', tool_calls=calls)
+        if not calls and prediction_requested and not prediction_run:
+            calls = [dict(function=dict(name='predict_power', arguments={}))]
+            message = dict(role='assistant', content='', tool_calls=calls)
+        if not calls:
+            answer = message.get('content', '').strip()
+            break
+        if len(calls) > 4:
+            raise ValueError('Too many tool requests')
+        messages.append(message)
+        for call in calls:
+            function = call['function']
+            name = function['name']
+            result = (run_power_tool(analysis, function.get('arguments', {}))
+                      if name == 'predict_power' else dict(error='Unknown tool'))
+            prediction_run = prediction_run or name == 'predict_power'
+            if name == 'predict_power' and 'predicted_kw' in result:
+                prediction_result = result
+            messages.append(dict(role='tool', tool_name=name,
+                                 content=json.dumps(result, allow_nan=False)))
+    else:
+        raise ValueError('Tool request limit reached')
     answer = re.sub(r'<think>.*?</think>', '', answer, flags=re.S).strip()
+    if '</think>' in answer:
+        answer = answer.rsplit('</think>', 1)[-1].strip()
     if not answer or '<think>' in answer:
         raise ValueError('Empty model answer')
+    if prediction_result and prediction_result.get('model'):
+        model = prediction_result['model']
+        label = {'RandomForest': 'Random Forest', 'ExtraTrees': 'Extra Trees',
+                 'HistGradientBoosting': 'Histogram Gradient Boosting', 'Ridge': 'Ridge Regression'}.get(model, model)
+        weather = 'with weather' if prediction_result.get('weather_used') else 'without weather'
+        answer += f'\n\n*Model used: {label} ({weather}).*'
     return answer
 
 

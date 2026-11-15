@@ -1,6 +1,8 @@
 import streamlit as st
+from pathlib import Path
 from src.dashboard import render_analysis
 from src.chat import render_chat
+from src.weather_ui import default_weather_location, cached_weather
 
 st.set_page_config(
     page_title="WattWise AI",
@@ -215,6 +217,13 @@ st.markdown(
         padding: 20px;
     }
 
+    .st-key-continue-button button {
+        min-height: 64px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border-radius: 32px;
+    }
+
     /* Style the footer */
     .site-footer {
         position: relative;
@@ -373,14 +382,21 @@ st.write(
     "Upload a CSV file containing your electricity consumption data."
 )
 
+def on_upload():
+    st.session_state.scroll_target = 'electricity-settings'
+
+
 uploaded_file = st.file_uploader(
     "Upload your electricity consumption CSV file",
-    type=["csv"]
+    type=["csv"],
+    on_change=on_upload,
 )
+st.caption("Use hourly readings with timestamp and consumption as the first two columns. Twelve months through the end of a calendar month are needed for a forecast.")
 
 st.divider()
 
 # Allow the user to enter their electricity settings
+st.html('<div id="electricity-settings" style="scroll-margin-top:80px"></div>')
 st.subheader("Electricity Settings")
 
 electricity_rate = st.number_input(
@@ -389,21 +405,84 @@ electricity_rate = st.number_input(
 
 st.divider()
 
-st.subheader("Your Energy Overview")
-
 unit = st.selectbox("Reading units", ["kW", "kWh"], help="Hourly average kW or kWh used during each hour. Cumulative meter readings are not supported.")
-timezone = st.text_input("Your data's timezone", value="UTC", help="For example Europe/Oslo or US/Eastern. Used for local calendar months; timestamps may include UTC offsets.")
-st.caption("Use hourly readings with timestamp and consumption as the first two columns. Twelve months through the end of a calendar month are needed for a forecast.")
+timezone = st.text_input("Local timezone", value="America/New_York", help="Used for displayed times, local calendar months and hourly model calendar features. Use the building's timezone. Timestamps without a UTC offset are interpreted in this timezone; timestamps with offsets preserve their original instant.")
+weather_location = default_weather_location()
+weather_status = st.empty()
+weather_site = None
+sample_path = Path(__file__).resolve().parent / 'samples/office_energy_sample.csv'
+if uploaded_file is not None and sample_path.exists() and uploaded_file.getvalue() == sample_path.read_bytes():
+    weather_site = 'Panther'
+    st.caption('Historical weather matched to this office sample. The next-hour model can use the previous hour’s recorded weather.')
+continue_area = st.empty()
+
+chat_area = st.container()
+st.divider()
+st.subheader("Your Energy Overview")
 
 analysis = None
 if uploaded_file is not None:
-    analysis = render_analysis(uploaded_file, unit=unit, timezone=timezone, electricity_rate=electricity_rate)
+    analysis = render_analysis(uploaded_file, unit=unit, timezone=timezone, electricity_rate=electricity_rate,
+                               weather_location=weather_location, weather_site=weather_site)
 else:
     st.info("Upload an electricity CSV file to see your consumption, patterns, and next-month forecast.")
 
+if analysis is not None and weather_site:
+    if sample_path.exists() and uploaded_file.getvalue() == sample_path.read_bytes() and weather_site == 'Panther':
+        analysis['building_context'] = dict(building_type='Office', source='Matched BDG2 office sample')
+    try:
+        from src.weather import previous_hour_weather
+        analysis['weather'] = previous_hour_weather(weather_site, analysis['hourly_prediction']['timestamp'])
+    except (OSError, ValueError, KeyError, ImportError):
+        analysis['weather'] = dict(status='unavailable', reason='Matching historical weather is unavailable; the consumption-only model remains available.')
+
+elif analysis is not None and weather_location:
+    try:
+        with st.spinner('Matching weather to your file’s date…'):
+            analysis['weather'] = cached_weather(weather_location, analysis['hourly_prediction']['timestamp'])
+            analysis['weather']['location_assumption'] = 'Miami, Florida is the demo default, not a verified location for the uploaded building.'
+        if analysis['weather']['status'] != 'available':
+            weather_status.info(analysis['weather']['reason'])
+        else:
+            weather_status.caption('Miami weather loaded for your file’s last recorded hour. No manual weather readings are needed.')
+    except (OSError, ValueError, KeyError):
+        analysis['weather'] = dict(status='unavailable', reason='The weather service is unavailable; using consumption-only forecasting.')
+        weather_status.info(analysis['weather']['reason'])
+
 st.divider()
 
-render_chat(analysis, electricity_rate)
+with chat_area:
+    st.html('<div id="ask-wattwise" style="scroll-margin-top:80px"></div>')
+    render_chat(analysis, electricity_rate)
+
+with continue_area:
+    _, center, _ = st.columns([1, 2, 1])
+    with center:
+        if st.button('Continue', key='continue-button', type='primary',
+                     width='stretch', disabled=analysis is None):
+            st.session_state.scroll_target = 'ask-wattwise'
+
+if uploaded_file is None:
+    st.session_state.scroll_target = None
+elif analysis is not None and st.session_state.get('scroll_target') in ('electricity-settings', 'ask-wattwise'):
+    target_id = st.session_state.scroll_target
+    st.html("""
+        <script>
+        (() => {
+            let attempts = 0;
+            const scrollToChat = () => {
+                const target = document.getElementById('SCROLL_TARGET');
+                if (target) {
+                    target.scrollIntoView({behavior: 'smooth', block: 'start'});
+                } else if (++attempts < 60) {
+                    requestAnimationFrame(scrollToChat);
+                }
+            };
+            requestAnimationFrame(scrollToChat);
+        })();
+        </script>
+    """.replace('SCROLL_TARGET', target_id), unsafe_allow_javascript=True)
+    st.session_state.scroll_target = None
 
 # Display the footer at the end of the page
 st.markdown(

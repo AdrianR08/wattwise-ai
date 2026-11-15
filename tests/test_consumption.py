@@ -8,6 +8,15 @@ from src.consumption import analyze_csv
 
 
 class ConsumptionTests(unittest.TestCase):
+    def test_hourly_prediction_uses_exact_elapsed_lags(self):
+        times = pd.date_range('2025-01-01', periods=25, freq='h', tz='UTC')
+        result = self.analyze(pd.DataFrame({'time': times, 'usage': range(25)}))
+        context = result['hourly_prediction']
+        self.assertEqual(context['lag_1h'], 24.)
+        self.assertEqual(context['lag_24h'], 1.)
+        result = self.analyze(pd.DataFrame({'time': times.delete(1), 'usage': 10.}))
+        self.assertIsNone(result['hourly_prediction']['lag_24h'])
+
     def analyze(self, frame, **kwargs):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'customer.csv'
@@ -42,6 +51,6 @@ class ConsumptionTests(unittest.TestCase):
         self.assertEqual(len(result['monthly']), 12)
         self.assertEqual(result['forecast']['status'], 'available')
         self.assertEqual(result['forecast']['month'], '2025-02')
-        self.assertEqual(result['forecast']['method'], 'random_forest')
+        self.assertEqual(result['forecast']['method'], 'last_month_baseline')
         self.assertGreaterEqual(result['forecast']['predicted_kwh'], 0)
         self.assertEqual(result['forecast']['baseline_kwh'], 28 * 24)

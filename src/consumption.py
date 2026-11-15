@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 
 from src.forecast import forecast_next_month
+from src.anomalies import detect_anomalies
 
 
 def analyze_csv(path, *, unit, timezone='UTC', timestamp_column=None, value_column=None):
@@ -63,6 +64,15 @@ def analyze_csv(path, *, unit, timezone='UTC', timestamp_column=None, value_colu
             findings.append(dict(date=row['date'], kind='high' if row['kwh'] > typical else 'low',
                                  observed_kwh=row['kwh'], typical_same_weekday_kwh=typical))
     valid = series.dropna()
+    target = end.tz_convert(timezone)
+    lag_1h = series.get(target - pd.Timedelta(hours=1))
+    lag_24h = series.get(target - pd.Timedelta(hours=24))
+    lag_168h = series.get(target - pd.Timedelta(hours=168))
+    hourly_prediction = dict(timestamp=target.isoformat(), timezone=timezone,
+        hour=target.hour, month=target.month, day_of_week=target.dayofweek,
+        lag_1h=float(lag_1h) if pd.notna(lag_1h) else None,
+        lag_24h=float(lag_24h) if pd.notna(lag_24h) else None,
+        lag_168h=float(lag_168h) if pd.notna(lag_168h) else None)
     return dict(schema_version=1, input_unit=unit, timezone=timezone,
         interval='hourly', window_start=str(series.index.min()), window_end_exclusive=str(end),
         quality=dict(input_rows=len(raw), retained_valid_hours=len(valid),
@@ -72,9 +82,9 @@ def analyze_csv(path, *, unit, timezone='UTC', timestamp_column=None, value_colu
         summary=dict(observed_kwh=float(valid.sum()), average_hourly_kwh=float(valid.mean()),
                      highest_hour=dict(timestamp=str(valid.idxmax()), kwh=float(valid.max())),
                      lowest_hour=dict(timestamp=str(valid.idxmin()), kwh=float(valid.min()))),
-        monthly=monthly, unusual_days=findings,
-        forecast=forecast_next_month(monthly, end, timezone),
+        monthly=monthly, unusual_days=findings, hourly_prediction=hourly_prediction,
+        forecast=forecast_next_month(monthly, end, timezone), anomalies=detect_anomalies(series),
         limitations=['Totals exclude unavailable readings; incomplete months are marked.',
                      'Unusual days are statistical flags, not diagnoses of faulty equipment.',
                      'Daily flags compare same weekdays without seasonal or weather adjustment.',
-                     'The random forest forecast is trained on non-residential buildings. Future weather and operational changes are not supplied.'])
+                     'The monthly estimate uses the last-month baseline; Random Forest is an experimental comparison. Future weather and operational changes are not supplied.'])
